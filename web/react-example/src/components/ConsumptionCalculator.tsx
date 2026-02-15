@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { X } from 'lucide-react';
-import HouseTypeSelector from './HouseTypeSelector';
-import ResidentsSelector from './ResidentsSelector';
-import ProductSelector from './ProductSelector';
-import styles from './ConsumptionCalculator.module.css';
+import { useState } from "react";
+import { X } from "lucide-react";
+import HouseTypeSelector from "./HouseTypeSelector";
+import ResidentsSelector from "./ResidentsSelector";
+import ProductSelector from "./ProductSelector";
+import styles from "./ConsumptionCalculator.module.css";
 
 export default function ConsumptionCalculator() {
-  const [houseType, setHouseType] = useState('apartment');
+  const [houseType, setHouseType] = useState("apartment");
   const [residents, setResidents] = useState(8);
   const [hasSolarPanels, setHasSolarPanels] = useState(false);
   const [consumption, setConsumption] = useState({});
@@ -16,7 +16,10 @@ export default function ConsumptionCalculator() {
     gas: 0,
   };
 
-  console.log('ConsumptionCalculator - computedConsumption=', computedConsumption);
+  console.log(
+    "ConsumptionCalculator - computedConsumption=",
+    computedConsumption,
+  );
 
   const handleResidentsSelectorChange = (incomingResidents) => {
     if (incomingResidents > 0) {
@@ -29,9 +32,15 @@ export default function ConsumptionCalculator() {
   return (
     <div className={styles.calculator}>
       <div className={styles.header}>
-        <div>
+        <div className={styles.titleContainer}>
           <h2 className={styles.title}>Verbruik berekenen</h2>
+          <a href="#" className={styles.link}>
+            Ik weet mijn verbruik
+          </a>
         </div>
+        <button className={styles.closeButton}>
+          <X />
+        </button>
       </div>
 
       <div className={styles.content}>
@@ -42,7 +51,10 @@ export default function ConsumptionCalculator() {
           </div>
           <div className={styles.section}>
             <p className={styles.label}>Aantal bewoners:</p>
-            <ResidentsSelector value={residents} onChange={handleResidentsSelectorChange} />
+            <ResidentsSelector
+              value={residents}
+              onChange={handleResidentsSelectorChange}
+            />
           </div>
         </div>
 
@@ -61,7 +73,12 @@ export default function ConsumptionCalculator() {
             />
             <label htmlFor="solarPanels">
               <span>Zonnepanelen</span>
-              <span className={styles.infoIcon} title="Information about solar panels">ⓘ</span>
+              <span
+                className={styles.infoIcon}
+                title="Information about solar panels"
+              >
+                ⓘ
+              </span>
             </label>
           </div>
 

@@ -1,7 +1,7 @@
 .calculator {
   max-width: 48rem;
   margin: 0 auto;
-  background: white;
+  background: #f3f3f3;
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 2rem;
@@ -14,20 +14,23 @@
   margin-bottom: 2rem;
 }
 
+.titleContainer {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  .link {
+    color: #6b7280;
+    font-size: 1.25rem;
+    font-weight: 300;
+  }
+}
+
 .title {
   font-size: 1.5rem;
   font-weight: 600;
   color: #1f2937;
   margin: 0;
-}
-
-.link {
-  color: #2563eb;
-  text-decoration: none;
-}
-
-.link:hover {
-  text-decoration: underline;
 }
 
 .closeButton {
@@ -36,6 +39,7 @@
   border: none;
   cursor: pointer;
   padding: 0.5rem;
+  line-height: 0;
 }
 
 .closeButton:hover {

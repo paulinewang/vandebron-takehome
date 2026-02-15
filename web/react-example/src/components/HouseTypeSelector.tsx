@@ -1,7 +1,13 @@
-import { JSX, useEffect, useState } from 'react';
-import { getHouseTypes } from './HouseTypeSelector.service';
-import styles from './HouseTypeSelector.module.css';
-import {  HouseApartment, HouseRowHome } from './icons';
+import { JSX, useEffect, useState } from "react";
+import { getHouseTypes } from "./HouseTypeSelector.service";
+import styles from "./HouseTypeSelector.module.css";
+import {
+  HouseApartment,
+  HouseCornerHouse,
+  HouseFreestanding,
+  HouseRowHome,
+  HouseSemiDetached,
+} from "./icons";
 
 interface HouseTypeSelectorProps {
   value: string;
@@ -14,33 +20,40 @@ type HouseType = {
   icon: JSX.Element;
 };
 
-export default function HouseTypeSelector({ value, onChange }: HouseTypeSelectorProps) {
-
+export default function HouseTypeSelector({
+  value,
+  onChange,
+}: HouseTypeSelectorProps) {
   const [houseTypes, setHouseTypes] = useState<HouseType[]>([]);
-  console.log('HouseTypeSelector - houseTypes=', houseTypes);
+  console.log("HouseTypeSelector - houseTypes=", houseTypes);
 
   useEffect(() => {
     const onLoad = async () => {
       let types = await getHouseTypes();
-      console.log('HouseTypeSelector - types=', types);
-      (types as {id: string, icon?: JSX.Element}[]).forEach((type) => {
-        // two-person homes
-        if (type.id === 'apartment' || type.id === 'townhouse') {
-          if (type.id === 'apartment') {
+      console.log("HouseTypeSelector - types=", types);
+      (types as { id: string; icon?: JSX.Element }[]).forEach((type) => {
+        switch (type.id) {
+          case "apartment":
             type.icon = <HouseApartment />;
-          } else if (type.id === 'townhouse') {
+            break;
+          case "townhouse":
             type.icon = <HouseRowHome />;
-          } else {
-            type.icon = <HouseRowHome />;
-          }
-        } else {
-          type.icon = <HouseRowHome />
+            break;
+          case "corner-house":
+            type.icon = <HouseCornerHouse />;
+            break;
+          case "two-under-one-roof":
+            type.icon = <HouseSemiDetached />;
+            break;
+          case "detached-house":
+            type.icon = <HouseFreestanding />;
+            break;
         }
       });
       setHouseTypes(types as HouseType[]);
     };
     onLoad();
-  })
+  });
 
   return (
     <div className={styles.container}>
@@ -50,10 +63,10 @@ export default function HouseTypeSelector({ value, onChange }: HouseTypeSelector
           <button
             key={type.id}
             name={type.id}
-            role='button'
-            aria-label={type.id}
+            role="button"
+            aria-label={type.label}
             onClick={() => onChange(type.id)}
-            className={`${styles.button} ${value === type.id ? styles.selected : ''}`}
+            className={`${styles.button} ${value === type.id ? styles.selected : ""}`}
             aria-selected={value === type.id}
           >
             {Icon ?? null}

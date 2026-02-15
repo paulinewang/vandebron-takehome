@@ -7,7 +7,7 @@ import styles from "./ConsumptionCalculator.module.css";
 
 export default function ConsumptionCalculator() {
   const [houseType, setHouseType] = useState("apartment");
-  const [residents, setResidents] = useState(8);
+  const [residents, setResidents] = useState(1);
   const [hasSolarPanels, setHasSolarPanels] = useState(false);
   const [consumption, setConsumption] = useState({});
 
@@ -21,7 +21,7 @@ export default function ConsumptionCalculator() {
     computedConsumption,
   );
 
-  const handleResidentsSelectorChange = (incomingResidents) => {
+  const handleResidentsSelectorChange = (incomingResidents: number) => {
     if (incomingResidents > 0) {
       if (incomingResidents < 10) {
         setResidents(incomingResidents);
@@ -46,11 +46,17 @@ export default function ConsumptionCalculator() {
       <div className={styles.content}>
         <div className={styles.row}>
           <div className={styles.section}>
-            <p className={styles.label}>Type woning:</p>
+            <p className={styles.label}>
+              Type woning:
+              <span className={styles.houseTypeValue}>{houseType}</span>
+            </p>
             <HouseTypeSelector value={houseType} onChange={setHouseType} />
           </div>
           <div className={styles.section}>
-            <p className={styles.label}>Aantal bewoners:</p>
+            <p className={styles.label}>
+              Aantal bewoners:
+              <span className={styles.residentsValue}>{residents}</span>
+            </p>
             <ResidentsSelector
               value={residents}
               onChange={handleResidentsSelectorChange}

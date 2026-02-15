@@ -53,7 +53,7 @@ export default function HouseTypeSelector({
       setHouseTypes(types as HouseType[]);
     };
     onLoad();
-  });
+  }, []);
 
   return (
     <div className={styles.container}>

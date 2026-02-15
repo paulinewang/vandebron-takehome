@@ -1,16 +1,34 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
-import HouseTypeSelector from './HouseTypeSelector';
+import { describe, it, expect, vi } from "vitest";
+import { render, screen } from "@testing-library/react";
+import HouseTypeSelector from "./HouseTypeSelector";
+import { getHouseTypes } from "./HouseTypeSelector.service";
 
-describe('HouseTypeSelector', () => {
-  it('what to do with made up things?', async () => {
-    const houseType = 'something-made-up';
+vi.mock("./HouseTypeSelector.service", () => ({
+  getHouseTypes: vi.fn(),
+}));
+
+describe("HouseTypeSelector", () => {
+  it("selects the chosen house type", async () => {
+    (getHouseTypes as any).mockResolvedValue([
+      { id: "apartment", label: "Appartement" },
+      { id: "townhouse", label: "Tussenwoning" },
+      { id: "corner-house", label: "Hoekwoning" },
+      { id: "two-under-one-roof", label: "2 onder 1 Kap" },
+      { id: "detached-house", label: "Vrijstaand" },
+    ]);
+
+    const houseType = "apartment";
     render(<HouseTypeSelector value={houseType} onChange={() => {}} />);
 
-    // Find the button you want to interact with
-    const button = await screen.findByRole('button', { name: 'apartment' });
+    const button = await screen.findByRole("button", { name: "Appartement" });
+    button.click();
+    expect(button).toHaveAttribute("aria-selected", "true");
+  });
 
-    // Check if the button is selected
-    expect(button).toHaveAttribute('aria-selected', 'true')
+  it("renders the correct number of house types", async () => {
+    render(<HouseTypeSelector value="apartment" onChange={() => {}} />);
+
+    const buttons = await screen.findAllByRole("button");
+    expect(buttons).toHaveLength(5);
   });
 });

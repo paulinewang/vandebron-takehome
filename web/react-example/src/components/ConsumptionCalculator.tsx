@@ -8,6 +8,7 @@ import styles from "./ConsumptionCalculator.module.css";
 export default function ConsumptionCalculator() {
   const [houseType, setHouseType] = useState("apartment");
   const [residents, setResidents] = useState(1);
+  const [product, setProduct] = useState("electric");
   const [hasSolarPanels, setHasSolarPanels] = useState(false);
   const [consumption, setConsumption] = useState({});
 
@@ -65,8 +66,10 @@ export default function ConsumptionCalculator() {
         </div>
 
         <div className={styles.section}>
-          <p className={styles.label}>Product:</p>
-          <ProductSelector />
+          <p className={styles.label}>
+            Product: <span className={styles.productValue}>{product}</span>
+          </p>
+          <ProductSelector value={product} onChange={setProduct} />
         </div>
 
         <div className={styles.footer}>

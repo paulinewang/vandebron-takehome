@@ -70,7 +70,8 @@
 }
 
 .houseTypeValue,
-.residentsValue {
+.residentsValue,
+.productValue {
   display: inline-block;
   margin-left: 0.5rem;
   color: #6b7280;

@@ -27,6 +27,7 @@ export default function ResidentsSelector({
           key={`residentOption-${index + 1}`}
           onClick={() => onChange(index + 1)}
           className={`${styles.button} ${value === index + 1 ? styles.selected : ""}`}
+          aria-selected={value === index + 1}
         >
           <div className={styles.icons}>{residentOption}</div>
         </button>

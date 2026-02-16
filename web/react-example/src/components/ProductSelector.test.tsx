@@ -17,20 +17,18 @@ describe("ProductSelector", () => {
     expect(electricAndGasIcon).toBeInTheDocument();
   });
 
-  describe("ProductSelector", () => {
-    it("marks the correct button as selected", async () => {
-      render(<ProductSelector value="electric" onChange={() => {}} />);
+  it("marks the correct button as selected", async () => {
+    render(<ProductSelector value="electric" onChange={() => {}} />);
 
-      const electricButton = await screen.findByRole("button", {
-        name: "Stroom",
-      });
-      const electricAndGasButton = await screen.findByRole("button", {
-        name: "Stroom en Gas",
-      });
-
-      expect(electricButton).toHaveAttribute("aria-selected", "true");
-      expect(electricAndGasButton).toHaveAttribute("aria-selected", "false");
+    const electricButton = await screen.findByRole("button", {
+      name: "Stroom",
     });
+    const electricAndGasButton = await screen.findByRole("button", {
+      name: "Stroom en Gas",
+    });
+
+    expect(electricButton).toHaveAttribute("aria-selected", "true");
+    expect(electricAndGasButton).toHaveAttribute("aria-selected", "false");
   });
 
   it("calls onChange with the correct value when a button is clicked", async () => {

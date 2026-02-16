@@ -88,10 +88,18 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  margin-top: 1rem;
+  color: #374151;
+  font-weight: 500;
 }
 
 .infoIcon {
   color: #9ca3af;
+  margin-left: 0.5rem;
+}
+
+.buttonContainer {
+  align-self: flex-end;
 }
 
 .button {
@@ -102,6 +110,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  align-self: end;
   gap: 0.5rem;
   transition: background-color 0.2s;
 }

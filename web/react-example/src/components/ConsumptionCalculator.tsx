@@ -4,6 +4,7 @@ import HouseTypeSelector from "./HouseTypeSelector";
 import ResidentsSelector from "./ResidentsSelector";
 import ProductSelector from "./ProductSelector";
 import styles from "./ConsumptionCalculator.module.css";
+import { SolarPanel } from "./icons";
 
 export default function ConsumptionCalculator() {
   const [houseType, setHouseType] = useState("apartment");
@@ -65,32 +66,36 @@ export default function ConsumptionCalculator() {
           </div>
         </div>
 
-        <div className={styles.section}>
-          <p className={styles.label}>
-            Product: <span className={styles.productValue}>{product}</span>
-          </p>
-          <ProductSelector value={product} onChange={setProduct} />
-        </div>
-
-        <div className={styles.footer}>
-          <div className={styles.checkbox}>
-            <input
-              type="checkbox"
-              id="solarPanels"
-              checked={hasSolarPanels}
-              onChange={(e) => setHasSolarPanels(e.target.checked)}
-            />
-            <label htmlFor="solarPanels">
-              <span>Zonnepanelen</span>
-              <span
-                className={styles.infoIcon}
-                title="Information about solar panels"
-              >
-                ⓘ
-              </span>
-            </label>
+        <div className={styles.row}>
+          <div className={styles.section}>
+            <p className={styles.label}>
+              Product: <span className={styles.productValue}>{product}</span>
+            </p>
+            <ProductSelector value={product} onChange={setProduct} />
           </div>
 
+          <div className={styles.section}>
+            <div className={styles.checkbox}>
+              <input
+                type="checkbox"
+                id="solarPanels"
+                checked={hasSolarPanels}
+                onChange={(e) => setHasSolarPanels(e.target.checked)}
+              />
+              <label htmlFor="solarPanels">
+                <SolarPanel />
+                <span>Zonnepanelen</span>
+                <span
+                  className={styles.infoIcon}
+                  title="Information about solar panels"
+                >
+                  ⓘ
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className={styles.section + " " + styles.buttonContainer}>
           <button className={styles.button}>
             <span>Ok</span>
             <span>→</span>

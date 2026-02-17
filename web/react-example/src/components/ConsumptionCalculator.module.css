@@ -69,19 +69,11 @@
   margin-bottom: 1rem;
 }
 
-.houseTypeValue,
-.residentsValue,
-.productValue {
+.labelSelection {
   display: inline-block;
   margin-left: 0.5rem;
   color: #6b7280;
   font-weight: 300;
-}
-
-.footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .checkbox {

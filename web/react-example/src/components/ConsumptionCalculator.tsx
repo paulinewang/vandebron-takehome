@@ -50,14 +50,14 @@ export default function ConsumptionCalculator() {
           <div className={styles.section}>
             <p className={styles.label}>
               Type woning:
-              <span className={styles.houseTypeValue}>{houseType}</span>
+              <span className={styles.labelSelection}>{houseType}</span>
             </p>
             <HouseTypeSelector value={houseType} onChange={setHouseType} />
           </div>
           <div className={styles.section}>
             <p className={styles.label}>
               Aantal bewoners:
-              <span className={styles.residentsValue}>{residents}</span>
+              <span className={styles.labelSelection}>{residents}</span>
             </p>
             <ResidentsSelector
               value={residents}
@@ -69,7 +69,7 @@ export default function ConsumptionCalculator() {
         <div className={styles.row}>
           <div className={styles.section}>
             <p className={styles.label}>
-              Product: <span className={styles.productValue}>{product}</span>
+              Product: <span className={styles.labelSelection}>{product}</span>
             </p>
             <ProductSelector value={product} onChange={setProduct} />
           </div>

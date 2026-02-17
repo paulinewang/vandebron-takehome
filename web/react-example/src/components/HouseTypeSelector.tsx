@@ -63,11 +63,11 @@ export default function HouseTypeSelector({
           <button
             key={type.id}
             name={type.id}
-            role="button"
+            role="radio"
             aria-label={type.label}
             onClick={() => onChange(type.id)}
             className={`${styles.button} ${value === type.id ? styles.selected : ""}`}
-            aria-selected={value === type.id}
+            aria-checked={value === type.id}
           >
             {Icon ?? null}
           </button>

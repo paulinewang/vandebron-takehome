@@ -40,7 +40,7 @@ export default function ConsumptionCalculator() {
             Ik weet mijn verbruik
           </a>
         </div>
-        <button className={styles.closeButton}>
+        <button className={styles.closeButton} aria-label="Close" role="button">
           <X />
         </button>
       </div>
@@ -96,7 +96,11 @@ export default function ConsumptionCalculator() {
           </div>
         </div>
         <div className={styles.section + " " + styles.buttonContainer}>
-          <button className={styles.button}>
+          <button
+            className={styles.button}
+            aria-label="Calculate consumption"
+            role="button"
+          >
             <span>Ok</span>
             <span>→</span>
           </button>

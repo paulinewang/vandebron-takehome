@@ -20,15 +20,15 @@ describe("HouseTypeSelector", () => {
     const houseType = "apartment";
     render(<HouseTypeSelector value={houseType} onChange={() => {}} />);
 
-    const button = await screen.findByRole("button", { name: "Appartement" });
+    const button = await screen.findByRole("radio", { name: "Appartement" });
     button.click();
-    expect(button).toHaveAttribute("aria-selected", "true");
+    expect(button).toHaveAttribute("aria-checked", "true");
   });
 
   it("renders the correct number of house types", async () => {
     render(<HouseTypeSelector value="apartment" onChange={() => {}} />);
 
-    const buttons = await screen.findAllByRole("button");
+    const buttons = await screen.findAllByRole("radio");
     expect(buttons).toHaveLength(5);
   });
 });

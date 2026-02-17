@@ -7,7 +7,7 @@ describe("ResidentsSelector", () => {
     const mockOnChange = vi.fn();
     render(<ResidentsSelector value={1} onChange={mockOnChange} />);
 
-    const buttons = screen.getAllByRole("button");
+    const buttons = screen.getAllByRole("radio");
     expect(buttons).toHaveLength(5);
   });
 
@@ -15,21 +15,21 @@ describe("ResidentsSelector", () => {
     const mockOnChange = vi.fn();
     render(<ResidentsSelector value={1} onChange={mockOnChange} />);
 
-    const buttons = screen.getAllByRole("button");
+    const buttons = screen.getAllByRole("radio");
     buttons[2].click(); // Click the button for 3 residents
 
     expect(mockOnChange).toHaveBeenCalledWith(3);
   });
 
-  it("sets aria-selected to true for the selected button", () => {
+  it("sets aria-checked to true for the selected button", () => {
     const mockOnChange = vi.fn();
     render(<ResidentsSelector value={2} onChange={mockOnChange} />);
 
-    const buttons = screen.getAllByRole("button");
-    expect(buttons[1]).toHaveAttribute("aria-selected", "true");
-    expect(buttons[0]).toHaveAttribute("aria-selected", "false");
-    expect(buttons[2]).toHaveAttribute("aria-selected", "false");
-    expect(buttons[3]).toHaveAttribute("aria-selected", "false");
-    expect(buttons[4]).toHaveAttribute("aria-selected", "false");
+    const buttons = screen.getAllByRole("radio");
+    expect(buttons[1]).toHaveAttribute("aria-checked", "true");
+    expect(buttons[0]).toHaveAttribute("aria-checked", "false");
+    expect(buttons[2]).toHaveAttribute("aria-checked", "false");
+    expect(buttons[3]).toHaveAttribute("aria-checked", "false");
+    expect(buttons[4]).toHaveAttribute("aria-checked", "false");
   });
 });

@@ -5,7 +5,7 @@ import ProductSelector from "./ProductSelector";
 describe("ProductSelector", () => {
   it("renders the correct number of product types", async () => {
     render(<ProductSelector value="electric" onChange={() => {}} />);
-    const buttons = await screen.findAllByRole("button");
+    const buttons = await screen.findAllByRole("radio");
     expect(buttons).toHaveLength(2);
   });
 
@@ -20,36 +20,24 @@ describe("ProductSelector", () => {
   it("marks the correct button as selected", async () => {
     render(<ProductSelector value="electric" onChange={() => {}} />);
 
-    const electricButton = await screen.findByRole("button", {
+    const electricButton = await screen.findByRole("radio", {
       name: "Stroom",
     });
-    const electricAndGasButton = await screen.findByRole("button", {
+    const electricAndGasButton = await screen.findByRole("radio", {
       name: "Stroom en Gas",
     });
 
-    expect(electricButton).toHaveAttribute("aria-selected", "true");
-    expect(electricAndGasButton).toHaveAttribute("aria-selected", "false");
+    expect(electricButton).toHaveAttribute("aria-checked", "true");
+    expect(electricAndGasButton).toHaveAttribute("aria-checked", "false");
   });
 
   it("calls onChange with the correct value when a button is clicked", async () => {
     const handleChange = vi.fn();
     render(<ProductSelector value="electric" onChange={handleChange} />);
-    const electricAndGasButton = await screen.findByRole("button", {
+    const electricAndGasButton = await screen.findByRole("radio", {
       name: "Stroom en Gas",
     });
     fireEvent.click(electricAndGasButton);
     expect(handleChange).toHaveBeenCalledWith("electric-and-gas");
-  });
-
-  it("sets aria-selected to true for the selected button", async () => {
-    render(<ProductSelector value="electric" onChange={() => {}} />);
-    const electricButton = await screen.findByRole("button", {
-      name: "Stroom",
-    });
-    const electricAndGasButton = await screen.findByRole("button", {
-      name: "Stroom en Gas",
-    });
-    expect(electricButton).toHaveAttribute("aria-selected", "true");
-    expect(electricAndGasButton).toHaveAttribute("aria-selected", "false");
   });
 });

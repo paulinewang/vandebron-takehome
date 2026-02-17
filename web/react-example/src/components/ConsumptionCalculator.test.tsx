@@ -44,7 +44,9 @@ describe("ConsumptionCalculator", () => {
   it("renders the submit button with the correct text", () => {
     render(<ConsumptionCalculator />);
 
-    const button = screen.getByRole("button", { name: "Ok →" });
+    const button = screen.getByRole("button", {
+      name: "Calculate consumption",
+    });
     expect(button).toBeInTheDocument();
   });
 });

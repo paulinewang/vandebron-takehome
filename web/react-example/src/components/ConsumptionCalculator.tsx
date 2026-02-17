@@ -3,6 +3,8 @@ import { X } from "lucide-react";
 import HouseTypeSelector from "./HouseTypeSelector";
 import ResidentsSelector from "./ResidentsSelector";
 import ProductSelector from "./ProductSelector";
+import { houseTypes } from "./HouseTypeSelector.service";
+import { productTypes } from "./ProductSelector";
 import styles from "./ConsumptionCalculator.module.css";
 import { SolarPanel } from "./icons";
 
@@ -31,6 +33,10 @@ export default function ConsumptionCalculator() {
     }
   };
 
+  const houseTypeLabel =
+    houseTypes.find((h) => h.id === houseType)?.label ?? "";
+  const productLabel = productTypes.find((p) => p.id === product)?.label ?? "";
+
   return (
     <div className={styles.calculator}>
       <div className={styles.header}>
@@ -50,7 +56,7 @@ export default function ConsumptionCalculator() {
           <div className={styles.section}>
             <p className={styles.label}>
               Type woning:
-              <span className={styles.labelSelection}>{houseType}</span>
+              <span className={styles.labelSelection}>{houseTypeLabel}</span>
             </p>
             <HouseTypeSelector value={houseType} onChange={setHouseType} />
           </div>
@@ -69,7 +75,8 @@ export default function ConsumptionCalculator() {
         <div className={styles.row}>
           <div className={styles.section}>
             <p className={styles.label}>
-              Product: <span className={styles.labelSelection}>{product}</span>
+              Product:
+              <span className={styles.labelSelection}>{productLabel}</span>
             </p>
             <ProductSelector value={product} onChange={setProduct} />
           </div>
@@ -98,6 +105,7 @@ export default function ConsumptionCalculator() {
         <div className={styles.section + " " + styles.buttonContainer}>
           <button
             className={styles.button}
+            name="Calculate consumption"
             aria-label="Calculate consumption"
             role="button"
           >

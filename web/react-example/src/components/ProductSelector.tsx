@@ -14,7 +14,7 @@ type ProductType = {
   icon: JSX.Element;
 };
 
-const productTypes: ProductType[] = [
+export const productTypes: ProductType[] = [
   { id: "electric", label: "Stroom", icon: <Electric /> },
   { id: "electric-and-gas", label: "Stroom en Gas", icon: <ElectricAndGas /> },
 ];

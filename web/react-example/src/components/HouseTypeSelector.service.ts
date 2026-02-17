@@ -1,4 +1,4 @@
-const houseTypes = [
+export const houseTypes = [
   { id: "apartment", label: "Appartement" },
   { id: "townhouse", label: "Tussenwoning" },
   { id: "corner-house", label: "Hoekwoning" },

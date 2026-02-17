@@ -8,7 +8,6 @@
 4. [Features and Implementation Details](#features-and-implementation-details)
 5. [Decisions, Trade-Offs, and Alternative Considerations](#decisions-trade-offs-and-alternative-considerations)
 6. [What I’d Do Differently / Future Improvements and Real-World Considerations](#what-id-do-differently--future-improvements-and-real-world-considerations)
-7. [Original Assignment Instructions](#original-assignment-instructions)
 
 ## Overview
 
@@ -18,7 +17,7 @@ Out of the four assignment areas, I decided to focus on a mix of UI improvements
 
 ## Screenshots
 
-![Screenshot 2026-02-17 at 13.08.19.png](./web/react-example/assets/screenshot-consumption-calculator.png)
+![Screenshot](web/react-example/assets/screenshot-consumption-calculator.png)
 
 ## Tech Stack
 
@@ -35,6 +34,7 @@ The application also uses **lucide-react**, as included in the original project 
 - Household configuration inputs.
 - The close and submit (”Ok”) buttons are non-functional.
 - Verified quality with Lighthouse: a Lighthouse report has been run on the application, showing positive (green) scores for accessibility, best practices, and SEO.
+- Added responsiveness for smaller viewport widths.
 
 In terms of development assistance, GitHub Copilot and ChatGPT were used to support coding and problem-solving, while all final implementation details were made independently.
 
@@ -62,6 +62,7 @@ While this project focuses on improvements to UI and production-readiness, there
   - The info icon would reveal a tooltip on hover, with information about solar panels.
   - Reconsider the UI if a household has more than 5 residents.
 - **Performance**: The Lighthouse report’s performance section shows that improvements can be made to the network dependency tree, minifying JavaScript, and reducing unused JavaScript.
+- **Improved accessibility** - The overall color contrast can be improved, but in an attempt to keep the implementation as close to the provided goal as possible, this was de-prioritized.
 
 Some action items that could be done to bring the implementation closer to a combination of Vandebron’s and my way of working are:
 
